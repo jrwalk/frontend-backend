@@ -7,9 +7,9 @@ from app.schema import User, Metrics
 app = FastAPI()
 
 
-@app.get("/")
+@app.get("/healthcheck")
 def home():
-    return {"message": "Hello world"}
+    return {"status": "ok"}
 
 
 @app.post("/age/", response_model=User, response_class=UJSONResponse)

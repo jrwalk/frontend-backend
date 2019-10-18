@@ -6,9 +6,9 @@ RUN \
     && apt-get install -y $BUILD_DEPS \
     && rm -rf /var/lib/apt/lists/*
 
-WORKDIR /opt/fastapi-test
-COPY requirements.txt /opt/fastapi-test/requirements.txt
-COPY requirements.dev.txt /opt/fastapi-test/requirements-dev.txt
+WORKDIR /opt/app
+COPY requirements.txt /opt/app/requirements.txt
+COPY requirements.dev.txt /opt/app/requirements-dev.txt
 
 RUN pip install -r requirements.txt
 RUN pip install -r requirements-dev.txt
