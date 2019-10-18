@@ -9,3 +9,6 @@ dev-shell:
 
 start:
 	docker-compose up -d
+
+clean-untagged-images:
+	docker rmi $$(docker images | grep '<none>' | awk '{print $$3}')
