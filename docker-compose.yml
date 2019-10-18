@@ -1,4 +1,5 @@
 version: '3.7'
+
 services:
   backend:
     build:
@@ -9,4 +10,18 @@ services:
     ports:
       - 5000:5000
     command: uvicorn --reload --workers 1 --host 0.0.0.0 --port 5000 app.app:app
+
+  frontend:
+    build:
+      context: ./frontend
+    volumes:
+      - './frontend:/app'
+      - '/app/node_modules'
+    ports:
+      - '3001:3000'
+    environment:
+      - NODE_ENV=development
+      - BACKEND_URL=backend:5000
+    depends_on:
+      - backend
 
